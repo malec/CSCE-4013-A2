@@ -27,7 +27,7 @@ public class BigramCount {
 			StringTokenizer itr = new StringTokenizer(value.toString());
 			if (itr.countTokens() != 1) {
 				Text previous = new Text(itr.nextToken().toLowerCase());
-				while (itr.hasMoreTokens() && itr.countTokens() != 1) {
+				while (itr.hasMoreTokens()) {
 					Text next = new Text(itr.nextToken().toLowerCase());
 					word.set(previous + ":" + next);
 					context.write(word, one);
@@ -37,7 +37,7 @@ public class BigramCount {
 		}
 
 		protected void cleanup(Context context) throws IOException, InterruptedException {
-			context.write(new Text("A-Map-Count"), new IntWritable(BigramCount.mapCount));
+			context.write(new Text("A-Map-Task-Count"), new IntWritable(BigramCount.mapCount));
 		}
 	}
 
