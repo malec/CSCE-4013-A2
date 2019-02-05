@@ -62,7 +62,7 @@ public class BigramCount {
 			System.err.println("Usage: BigramCount <in> <out>");
 			System.exit(2);
 		}
-		Job job = new Job(conf, "word count");
+		Job job = new Job(conf, "Bigram Count");
 		job.setJarByClass(BigramCount.class);
 		job.setMapperClass(TokenizerMapper.class);
 		job.setCombinerClass(IntSumReducer.class);
