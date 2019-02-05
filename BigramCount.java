@@ -29,7 +29,7 @@ public class BigramCount {
 				Text previous = new Text(itr.nextToken().toLowerCase());
 				while (itr.hasMoreTokens()) {
 					Text next = new Text(itr.nextToken().toLowerCase());
-					word.set(previous + ":" + next);
+					word.set(previous + " " + next);
 					context.write(word, one);
 					previous = next;
 				}
