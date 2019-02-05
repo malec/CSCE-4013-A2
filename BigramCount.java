@@ -26,9 +26,9 @@ public class BigramCount {
 		public void map(Object key, Text value, Context context) throws IOException, InterruptedException {
 			StringTokenizer itr = new StringTokenizer(value.toString());
 			if (itr.countTokens() != 1) {
-				Text previous = new Text(itr.nextToken().toLowerCase());
+				Text previous = new Text(itr.nextToken());
 				while (itr.hasMoreTokens()) {
-					Text next = new Text(itr.nextToken().toLowerCase());
+					Text next = new Text(itr.nextToken());
 					word.set(previous + " " + next);
 					context.write(word, one);
 					previous = next;
