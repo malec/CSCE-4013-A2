@@ -13,15 +13,9 @@ import org.apache.hadoop.util.GenericOptionsParser;
 import java.util.*;
 
 public class BigramCount {
-	private static int mapCount = 0;
-
 	public static class TokenizerMapper extends Mapper<Object, Text, Text, IntWritable> {
 		private final static IntWritable one = new IntWritable(1);
 		private Text word = new Text();
-
-		public TokenizerMapper() {
-			BigramCount.mapCount++;
-		}
 
 		public void map(Object key, Text value, Context context) throws IOException, InterruptedException {
 			StringTokenizer itr = new StringTokenizer(value.toString());
@@ -37,7 +31,7 @@ public class BigramCount {
 		}
 
 		protected void cleanup(Context context) throws IOException, InterruptedException {
-			context.write(new Text("A-Map-Task-Count"), new IntWritable(BigramCount.mapCount));
+			context.write(new Text("A-Map-Task-Count"), one);
 		}
 	}
 
