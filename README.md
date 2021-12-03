@@ -1,6 +1,6 @@
 ## Bigram Count and Map Task Count Using Hadoop MapReduce
 
-### Written by Alec Ahlbrandt
+### Written by [@malec](https://github.com/malec)
 
 ### Build and run:
 
